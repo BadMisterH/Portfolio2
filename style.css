@@ -347,7 +347,7 @@ a {
   width: 100px;
   border : solid 2px var(--couleurFond);
   mix-blend-mode: difference;
-  transition: 0.15s ease;
+  transition: 0.8s ease;
 }
 
 #cursor2{
@@ -355,7 +355,7 @@ a {
   width: 30px;
   background-color: var(--couleurFond);
   mix-blend-mode: difference; 
-  transition: 0.30s ease;
+  transition: 0.16s ease;
 }
 
 .cursorLarge{
