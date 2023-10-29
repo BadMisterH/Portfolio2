@@ -1,68 +1,92 @@
 import Lenis from "@studio-freight/lenis";
 
-const cursorMove = document.querySelectorAll(".cursor");
+// const cursorMove = document.querySelector(".cursor");
 const btnInfo = document.querySelector(".container-info-btn");
+const cursorMoveTableau = [document.querySelector(".inner-cursor"), document.querySelector(".outer-cursor")];
+const allliens = document.querySelectorAll("a");
 
 
 function positionCursor(e) {
-  cursorMove.forEach(element => {
-    element.style.top = e.y + "px";
-    element.style.left = e.x + "px";
+  // cursorMove.setAttribute("style", `top:` + (e.pageY - 50) + "px; left:" + (e.pageX - 50) + "px;");
+
+  cursorMoveTableau.forEach(elementTab => {
+    let x = e.x + "px"
+    let y = e.y + "px"
+
+    elementTab.style.left = x;
+    elementTab.style.top = y;
+
   })
+
 }
 
-cursorMove.forEach(element => {
+window.addEventListener("mousemove", positionCursor);
 
-  element.addEventListener("mouseenter", (e) => {
-    const elements = document.elementsFromPoint(e.clientX, e.clientY);
-    for (let element of elements) {
-      if (element.tagName === "A") {
-        document.getElementById("cursor1").classList.add("cursorLarge")
-      }
 
-      if (element.tagName === "svg" &&  element.id === "up") {
-        element.style.zIndex = "10000000000 !important" 
-        document.getElementById("cursor1").classList.add("cursorLarge")
-      }
-    }
+allliens.forEach(elementLiens => {
+
+  elementLiens.style.cursor = "none"
+
+  elementLiens.addEventListener("mouseenter", () => {
+    document.querySelector(".inner-cursor").classList.add("grow")
   })
 
-
-  element.addEventListener("mouseleave", (e) => {
-    const elements = document.elementsFromPoint(e.clientX, e.clientY);
-    for (let element of elements) {
-      if (element.tagName === "A") {
-      } else {
-        document.getElementById("cursor1").classList.remove("cursorLarge")
-      }
-
-      if (element.tagName === "svg" && element.id === "up") {
-      } else {
-        document.getElementById("cursor1").classList.remove("cursorLarge")
-      }
-    }
+  elementLiens.addEventListener("mouseleave", () => {
+    document.querySelector(".inner-cursor").classList.remove("grow")
   })
-
-
-  element.addEventListener("click", () => {
-    const elements = document.elementsFromPoint(event.clientX, event.clientY);
-    for (let element of elements) {
-      if (element.tagName === "A") {
-        window.open(element.href, "_blank"); // Ouvre le lien dans une nouvelle fenêtre
-      }
-      if (element.tagName === "svg" && element.id === "up"){
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth" 
-        });
-      }
-    }
-  });
 })
 
 
+// cursorMove.forEach(element => {
 
-window.addEventListener("mousemove", positionCursor);
+//   element.addEventListener("mouseenter", (e) => {
+//     const elements = document.elementsFromPoint(e.clientX, e.clientY);
+//     for (let element of elements) {
+//       if (element.tagName === "A") {
+//         document.getElementById("cursor1").classList.add("cursorLarge")
+//       }
+
+//       if (element.tagName === "svg" &&  element.id === "up") {
+//         element.style.zIndex = "10000000000 !important" 
+//         document.getElementById("cursor1").classList.add("cursorLarge")
+//       }
+//     }
+//   })
+
+
+//   element.addEventListener("mouseleave", (e) => {
+//     const elements = document.elementsFromPoint(e.clientX, e.clientY);
+//     for (let element of elements) {
+//       if (element.tagName === "A") {
+//       } else {
+//         document.getElementById("cursor1").classList.remove("cursorLarge")
+//       }
+
+//       if (element.tagName === "svg" && element.id === "up") {
+//       } else {
+//         document.getElementById("cursor1").classList.remove("cursorLarge")
+//       }
+//     }
+//   })
+
+
+//   element.addEventListener("click", () => {
+//     const elements = document.elementsFromPoint(event.clientX, event.clientY);
+//     for (let element of elements) {
+//       if (element.tagName === "A") {
+//         window.open(element.href, "_blank"); // Ouvre le lien dans une nouvelle fenêtre
+//       }
+//       if (element.tagName === "svg" && element.id === "up"){
+//         window.scrollTo({
+//           top: 0,
+//           behavior: "smooth" 
+//         });
+//       }
+//     }
+//   });
+// })
+
+
 
 function mediaSociaux() {
   btnInfo.classList.toggle("open");
@@ -110,28 +134,28 @@ lenis.on("scroll", () => {
   if (scrollPosition > 95) {
     document.querySelector(".btn-diplome").classList.add("colorBtnSwipeDiplome");
 
-    document.querySelector(".btn-info-croix").style.backgroundColor = "#F3F1EE";
+    document.querySelector(".btn-info-croix").style.backgroundColor = "#031335";
     document.querySelector(".croix-svg").classList.add("active");
 
     document.querySelectorAll(".btn-info").forEach((element) => {
-      element.style.backgroundColor = "#F3F1EE";
+      element.style.backgroundColor = "#031335";
 
 
       document.querySelectorAll(".btn-info svg path").forEach((color) => {
-        color.setAttribute("fill", "#031335");
+        color.setAttribute("fill", "#F3F1EE");
       });
     });
   } else {
     document.querySelector(".btn-diplome").classList.remove("colorBtnSwipeDiplome");
 
-    document.querySelector(".btn-info-croix").style.backgroundColor = "#031335";
+    document.querySelector(".btn-info-croix").style.backgroundColor = "#F3F1EE";
     document.querySelector(".croix-svg").classList.remove("active");
 
     document.querySelectorAll(".btn-info").forEach((element) => {
-      element.style.backgroundColor = "#031335";
+      element.style.backgroundColor = "#F3F1EE";
 
       document.querySelectorAll(".btn-info svg path").forEach((color) => {
-        color.setAttribute("fill", "#F3F1EE");
+        color.setAttribute("fill", "#031335");
 
       });
     });

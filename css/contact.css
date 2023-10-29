@@ -1,151 +1,79 @@
 @import url("https://fonts.googleapis.com/css2?family=Martel:wght@200&family=Poppins:wght@400;600&family=Rubik:wght@800&display=swap");
 
+
 @font-face {
-    font-family: "PPNeueMontreal";
-    src: url("../public/font/PPNeueMontreal-Bold.otf") format("otf");
-}
-  
-:root {
-  --couleurMain: #031335;
-  --couleurFond: #f3f1ee;
+  font-family: "PPNeueMontreal";
+  src: url("../public/font/PPNeueMontreal-Bold.otf") format("otf");
 }
 
-.container-contact {
-  position: relative;
-  overflow: hidden;
+:root {
+  --couleurMain: #f3f1ee;
+  --couleurFond: #031335;
+}
+
+.container-contact{
   height: 100vh;
   width: 100%;
-  display: flex;
-  align-items: center;
+  position: relative;
+  padding: 79px 0; 
 }
 
-.discover {
-  background-color: transparent;
-}
-
-.container-contact .background-cacher {
-  background-color: var(--couleurMain);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0%;
+.contact{
   height: 100%;
-  border-radius: 0 100% 100% 0;
+  width: 100%;
+  height: 40vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 40px;
-  padding-left: 0vw;
-  overflow: hidden;
-}
-
-.background-cacher h2 {
-  font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-  font-weight: bold;
-  color: var(--couleurFond);
-  position: relative;
-  top: 5%;
-  left: 40%;
-  transform: translate(-40%, -5%);
-  font-size: 3rem;
-}
-
-.container-coordonnee{
-    position: relative;
-    top: 20%;
-    left: -10px;
-    transform: translateY(-20%);
-    overflow: hidden !important;
-    background-color: var(--couleurFond);
-    padding: 20px 0;
-}
-
-.coordonnee {
-  font-size: 100px;
-  white-space: nowrap;
-  font-family: "PPNeueMontreal";
-  line-height: 1.3;
-  animation: slider 13.5s infinite linear; 
-  color: var(--couleurMain) !important;
-}
-
-.coordonnee::after {
-  content: "- KHAZZANI Badr - Mail : badraitoufel5@gmail.com - Tel : 06 86 01 11 47";
-}
-
-.container-contact img {
-  width: 100%;
-  height: 350px;
-  max-height: 600px;
-}
-
-.toile {
-  width: 100%;
-  height: 50%;
-  margin-left: -30px;
-  scale: 1.05;
-  transform: translateX(100%);
-  filter: drop-shadow(0 4px 4px rgba(3, 19, 53, 0.8));
-}
-
-.section-btn-contact{
-  width: 50%;
-  padding: 5px 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
-  position: absolute;
-  left: 30%;
-  transform: translateX(-30%);
-  bottom: 0;
-  z-index: 999999999999999999 !important;
+  justify-content: space-around;
 }
 
-.section-btn-contact p, .section-btn-contact a{
+.adresse-mail{
+  font-size: 4rem;
+  font-family: "PPNeueMontreal";
+  text-transform: uppercase;
+  overflow: hidden;
+  height: fit-content;
+  width: fit-content;
+  color: white;
+}
+
+.adresse-mail > .char{
+  position: relative;
+  top : -80px
+}
+
+.contact-title{
+  font-size: 4rem;
+  letter-spacing: 3px;
+  font-family: 'Do Hyeon', sans-serif;
+  text-transform: uppercase;
+  -webkit-text-stroke: 1px var(--couleurMain);
   color: var(--couleurFond);
-  font-family: 'Poppins';
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
+  text-align: center;
 }
 
-.logo-info{
+.btn-footer{
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 20%;
-  position: relative;
-  z-index: 999999999999999999999999 !important;
+  flex-wrap: wrap;
+  position: absolute;
+  bottom: 0;
+  padding: 5px 0;
 }
 
-.arrow{
-  transition: 1s all;
-  position: relative;
-  z-index: 999999999999999999999999 !important;
+.btn-footer p {
+  color: white;
+  font-family: 'Do Hyeon', sans-serif;
+  text-transform: uppercase;
+  font-size: 26px;
+  letter-spacing: 2px;
 }
 
-
-.arrow:hover{
-  animation: arrow 1s infinite linear; 
-}
-
-@keyframes arrow {
-  0%{
-    transform: rotate(0);
-  }
-  100%{
-    transform: rotate(360deg);
-  }
-} 
-
-
-@keyframes slider {
-    0%{
-        transform: translateX(0%);
-    }
-    100%{
-        transform: translateX(-50%);
-    }
+.logo-info{
+  width: 10%;
+  display: flex;
+  justify-content: space-around;
 }

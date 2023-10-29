@@ -1,6 +1,9 @@
 import Lenis from "@studio-freight/lenis";
-import ScrollTrigger from "gsap/ScrollTrigger";
+// import ScrollTrigger from "gsap/ScrollTrigger";
 import { VANTA } from "vanta";
+import Contact from './js/contact'; // Importer le module
+
+Contact.Mail();
 
 
 //VANTA JS
@@ -8,10 +11,10 @@ const fond = VANTA.GLOBE({
   el: "#BackgroundPortfolio",
   mouseControls: true,
   touchControls: true,
-  backgroundColor: "#F3F1EE",
-  color: "#031335",
-  color2: "#031335",
-  size: 1.70
+  backgroundColor: "#031335",
+  color: "#F3F1EE",
+  color2: "#F3F1EE",
+  size: 1.50
 });
 
 // VANTA.BIRDS({
@@ -33,9 +36,6 @@ const fond = VANTA.GLOBE({
 fond.resize();
 
 
-
-
-
 gsap.registerPlugin(ScrollTrigger);
 
 //gsap
@@ -50,32 +50,13 @@ const scrollSection2 = document.querySelector(".container-two");
 // 1260 pour une section
 
 gsap.to(document.querySelector(".scrollbarProgression"), {
-  delay: 13,
+  delay: 15,
 });
 
 setTimeout(() => {
   document.querySelector(".scrollbarProgression").classList.add("trait");
-}, 3000);
+}, 4200);
 
-gsap.to(scrollContainer, {
-  x: () =>
-    -(scrollContainer.scrollWidth - document.documentElement.offsetWidth),
-  ease: "none",
-  scrollTrigger: {
-    trigger: scrollContainer,
-    pin: true, // Épingle le contenu pendant l'animation
-    scrub: 0.5, // Effet de "scrubbing" pour une interaction fluide
-    anticipatePin: 1, // Améliore l'anticipation de l'épinglage
-    start: "top 0%",
-    markers: false,
-    end: () =>
-      `+=${scrollContainer.scrollWidth - document.documentElement.offsetWidth}`,
-    onComplete: () => {
-      // Désactive le pin à la fin du défilement
-      gsap.set(scrollContainer, { pin: false });
-    },
-  },
-});
 
 //Présentation
 new SplitType(h1Présentation, { types: "word" });
@@ -191,24 +172,23 @@ lenis.on("scroll", () => {
   if (scrollPosition > 90) {
     document.querySelector(
       ".conteneur-scrollbar-progression"
-    ).style.backgroundColor = "#F3F1EE";
+    ).style.backgroundColor = "#031335";
 
 
     document.querySelector(".btn-info-croix").classList.add("borderCroix");
 
-
     if (scrollPosition > 95) {
-      document.querySelector(".btn-diplome path").setAttribute("fill", "#031335");
+      document.querySelector(".btn-diplome path").setAttribute("fill", "#F3F1EE");
     }
   } else {
     document.querySelector(
       ".conteneur-scrollbar-progression"
-    ).style.backgroundColor = "#031335";
+    ).style.backgroundColor = "#F3F1EE";
 
     document.querySelector(".glowing-btn").classList.remove("ColorChange");
 
     if (scrollPosition < 95) {
-      document.querySelector(".btn-diplome path").setAttribute("fill", "#F3F1EE");
+      document.querySelector(".btn-diplome path").setAttribute("fill", "#031335");
     }
 
 
@@ -217,47 +197,46 @@ lenis.on("scroll", () => {
 
 //CONTACT
 
-const discoverSectionSpiderMan = () => {
-  const containerDiscover = document.querySelector(".background-cacher");
-  const cobweb = document.querySelector(".toile");
+// const discoverSectionSpiderMan = () => {
+//   const containerDiscover = document.querySelector(".background-cacher");
+//   const cobweb = document.querySelector(".toile");
 
-  gsap.registerPlugin(ScrollTrigger);
+//   gsap.registerPlugin(ScrollTrigger);
 
-  const timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".discover",
-      duration: 5000,
-      start: "center center",
-      end: "+=2000",
-      scrub: 1,
-      pin: true,
-    },
-  });
+//   const timeline = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".discover",
+//       start: "center center", // Déclenche le pin lorsque 80% de l'élément .discover est visible depuis le haut de la fenêtre
+//       end: "+=1000",
+//       scrub: 1,
+//       pin : true,
+//       markers :true,
+//     },
+//   });
 
-  // Animation pour amener la cobweb de 100% à 0%
-  timeline.to(cobweb, {
-    x: "0%",
-    duration: 1,
-  });
+//   // Animation pour amener la cobweb de 100% à 0%
+//   timeline.to(cobweb, {
+//     x: "0%",
+//     duration: 1,
+//   });
 
-  timeline.to(containerDiscover, {
-    width: "120%",
-    duration: 8,
-    borderRadius: 0,
-    paddingLeft: 15,
-    onUpdate: () => {
-      // Met à jour la position horizontale de l'image pendant l'animation
-      const containerWidth = parseFloat(
-        getComputedStyle(containerDiscover).width
-      );
+//   timeline.to(containerDiscover, {
+//     width: "120%",
+//     duration: 8,
+//     borderRadius: 0,
+//     paddingLeft: 15,
+//     onUpdate: () => {
+//       // Met à jour la position horizontale de l'image pendant l'animation
+//       const containerWidth = parseFloat(getComputedStyle(containerDiscover).width);
+//       cobweb.style.transform = `translateX(${containerWidth}px)`;
+//     },
+//   });
 
-      cobweb.style.transform = `translateX(${containerWidth}px)`;
-    },
-  });
-};
+// };
 
+// discoverSectionSpiderMan()
 // Appel de la fonction pour déclencher l'animation
-discoverSectionSpiderMan();
+
 
 function raf(time) {
   lenis.raf(time);
@@ -267,6 +246,5 @@ function raf(time) {
 requestAnimationFrame(raf);
 
 //gsap text
-
 
 

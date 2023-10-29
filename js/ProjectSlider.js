@@ -1,260 +1,93 @@
-import Lenis from "@studio-freight/lenis";
+// let longueurContenu = document.querySelector(".scroll-container").scrollWidth;
+let documentElment = document.documentElement.offsetWidth;
+let elements = document.querySelectorAll(".container-projet");
+// let PartiePasVisible = longueurContenu - documentElment;
 
-const titleProjects = document.querySelector(".TitleProjects");
-new SplitType(titleProjects, { types: "chars" });
+const ProjetTitre = document.querySelector(".projet");
+const spliline = new SplitType(ProjetTitre, { types: "chars" });
+const charAllProjet = document.querySelectorAll(".char");
 
-const lenis = new Lenis();
+charAllProjet.forEach((elementtxtProjet) => {
+  const createlementDiv = document.createElement("div");
+  const divInnerProjet = elementtxtProjet.appendChild(createlementDiv);
+  divInnerProjet.classList.add("cache");
+});
 
-function scrollPositionExact() {
-    let positionScrollY = Math.ceil(lenis.progress * 100);
 
-    const sectionOnecontainer = [
-        document.querySelector(".description-project"),
-        document.querySelector(".imgtTechTitre"),
-    ];
+gsap.to(".cache", {
+  width: "100%",
+  scrollTrigger: {
+    trigger: ".container-title-projet",
+    start: "top 20%",
+    end: "bottom 80%",
+    pin : true,
+    anticipatePin : true,
+    onUpdate: (self) => {
+     let scrollValue = 100 - Math.round(self.progress * 100);
+      gsap.to(".cache", {width : `${scrollValue}%`});
 
-    const sectionOnecontainer2 = [
-        document.querySelector(".description-project2"),
-        document.querySelector(".imgtTechTitre2"),
-    ];
+    },  
+  },
+});
 
-    const sectionOnecontainer3 = [
-        document.querySelector(".description-project3"),
-        document.querySelector(".imgtTechTitre3"),
-    ];
+const TotalCarrousel = document.querySelector(".allSedtionProjet").scrollWidth;
+const largeurViewport = document.documentElement.offsetWidth;
 
-    if (positionScrollY >= 44) {
+const ContenuProjetInvisible = TotalCarrousel - largeurViewport;
 
-        document.querySelector(".imgProject").classList.add("animated-path")
-        document.querySelector(".content-project-all-one").style.transform =
-            "translateX(0px)";
 
-        document.querySelector(".description-project").style.display = "flex";
-        document.querySelector(".imgtTechTitre").style.display = "flex";
 
-        sectionOnecontainer.forEach((elementContainerSec, index) => {
-            if (index == 0) {
-                gsap.to(elementContainerSec, {
-                    duration: 1,
-                    delay: 0.2,
-                    opacity: 1,
-                    ease: "power2.out",
-                    y: 0
-                });
-            } else {
-                gsap.to(elementContainerSec, {
-                    duration: 1,
-                    delay: 0.2,
-                    opacity: 1,
-                    ease: "power2.out",
-                    y: 0
-                });
-            }
-        });
+gsap.to(".card", {
+    x : 0,
+    scrollTrigger : {
+        trigger : ".allSedtionProjet",
+        start : "center center",
+        end : () => "+=" -ContenuProjetInvisible,
+        anticipatePin : 1,
+        pin : true,
+        onUpdate : (self) => {
+            let progressionScroll = Math.round (self.progress * 100);
+            let result = (progressionScroll * 10) 
+            gsap.to(".card", {x : -result + "px" })
+
+        },
+
     }
-
-    if (positionScrollY >= 54) {
-        sectionOnecontainer2.forEach((elementContainerTwoProject, index) => {
-            if (index == 0) {
-                gsap.to(elementContainerTwoProject, {
-                    duration: 1.2,
-                    delay: 0.7,
-                    opacity: 1,
-                    ease: "power2.out",
-                    y: 0
-                });
-            } else {
-                gsap.to(elementContainerTwoProject, {
-                    duration: 1.2,
-                    delay: 0.7,
-                    opacity: 1,
-                    ease: "power2.out",
-                    y: 0
-                });
-            }
-        })
-    }
-
-    if (positionScrollY >= 70) {
-
-        document.querySelector(".content-project-all-one").style.transform =
-            "translateX(0px)";
-
-        document.querySelector(".description-project3").style.display = "flex";
-        document.querySelector(".imgtTechTitre3").style.display = "flex";
-
-        sectionOnecontainer3.forEach((elementContainerSec, index) => {
-            if (index == 0) {
-                gsap.to(elementContainerSec, {
-                    duration: 1,
-                    delay: 0.2,
-                    opacity: 1,
-                    x: 0
-                });
-            } else {
-                gsap.to(elementContainerSec, {
-                    duration: 1,
-                    delay: 0.2,
-                    opacity: 1,
-                    y: 0
-                });
-            }
-        });
-    }
-
-}
-
-lenis.on("scroll", scrollPositionExact);
-
-
-gsap.to('.rideau-projet-txt.char', {
-    scrollTrigger: {
-        onUpdate: (self) => {
-            const progressionScrollProjet = Math.ceil(self.progress * 100);
-
-            if (progressionScrollProjet >= 100) {
-
-                document.querySelectorAll('.char').forEach((element, index) => {
-
-                    switch (index) {
-                        case 0:
-                            gsap.to(element, {
-                                height: 400,
-                                duration: 0.5,
-                                delay: 0.5
-                            })
-                            break;
-
-                        case 1:
-                            gsap.to(element, {
-                                height: 400,
-                                duration: 0.5,
-                                delay: 0.7
-                            })
-                            break;
-
-                        case 2:
-                            gsap.to(element, {
-                                height: 400,
-                                duration: 0.5,
-                                delay: 0.9
-                            })
-                            break;
-
-                        case 3:
-                            gsap.to(element, {
-                                height: 400,
-                                duration: 0.5,
-                                delay: 1.1
-                            })
-                            break;
-
-                        case 4:
-                            gsap.to(element, {
-                                height: 400,
-                                duration: 0.5,
-                                delay: 1.3
-                            })
-                            break;
-
-                        case 5:
-                            gsap.to(element, {
-                                height: 400,
-                                duration: 0.5,
-                                delay: 1.5
-                            })
-                            break;
-
-                        default:
-                            gsap.to(element, {
-                                height: 400,
-                                duration: 0.5,
-                                delay: 1.7
-                            })
-
-                    }
-
-                })
-
-
-
-            } else {
-
-                document.querySelectorAll('.char').forEach((element, index) => {
-
-                    switch (index) {
-                        case 0:
-                            gsap.to(element, {
-                                height: 0,
-                                duration: 0.5,
-                                delay: 0.5
-                            })
-                            break;
-
-                        case 1:
-                            gsap.to(element, {
-                                height: 0,
-                                duration: 0.5,
-                                delay: 0.7
-                            })
-                            break;
-
-                        case 2:
-                            gsap.to(element, {
-                                height: 0,
-                                duration: 0.5,
-                                delay: 0.9
-                            })
-                            break;
-
-                        case 3:
-                            gsap.to(element, {
-                                height: 0,
-                                duration: 0.5,
-                                delay: 1.1
-                            })
-                            break;
-
-                        case 4:
-                            gsap.to(element, {
-                                height: 0,
-                                duration: 0.5,
-                                delay: 1.3
-                            })
-                            break;
-
-                        case 5:
-                            gsap.to(element, {
-                                height: 0,
-                                duration: 0.5,
-                                delay: 1.5
-                            })
-                            break;
-
-                        default:
-                            gsap.to(element, {
-                                height: 0,
-                                duration: 0.5,
-                                delay: 1.7
-                            })
-
-                    }
-
-                })
-
-            }
-        }
-    }
-
 })
 
 
+// let timeline = gsap.timeline();
 
-function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-}
+// Faire en sorte de commencer l'animation au milieu
+// let halfScreenWidth = documentElment / 2;
+// let halfContentWidth = longueurContenu / 2;
+// window.scrollTo(halfContentWidth - halfScreenWidth, 0);
 
-requestAnimationFrame(raf);
+const card = document.querySelectorAll(".card");
+
+card.forEach(elecard => {
+    elecard.addEventListener("mousemove", (e) => {
+
+        let elRect = elecard.getBoundingClientRect();
+
+        let x = e.clientX - elRect.x
+        let y = e.clientY - elRect.y
+
+        let midCardWidth = elRect.width / 2
+        let midCardHeight = elRect.height / 2
+
+        let angleY = -(x - midCardWidth) / 8
+        let angleX = (y - midCardHeight) / 8
 
 
+        elecard.children[0].style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.1)`
+
+    })
+
+
+    elecard.addEventListener("mouseleave", () => {
+        elecard.children[0].style.transform = `rotate(0) rotate(0) scale(1)`
+        elecard.children[0].style.transition = ".25s all ease-in-out"
+
+    })
+})

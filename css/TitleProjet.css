@@ -1,0 +1,73 @@
+:root {
+    --couleurMain: #f3f1ee;
+    --couleurFond: #031335;
+}
+
+.sectionProjectTitle {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.container-title-projet {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    padding-top: 20px;
+    padding-top: 40px;
+    justify-content: center;
+}
+
+.container-title-projet>h2 {
+    font-size: 12rem;
+    letter-spacing: 3px;
+    font-family: 'Do Hyeon', sans-serif;
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px var(--couleurMain);
+    color: var(--couleurFond);
+    font-weight: bold;
+    position: relative;
+    border: 20px;
+}
+
+.projet>.char {
+    position: relative;
+    overflow: hidden;
+}
+
+.cache {
+    background-color: var(--couleurFond);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+}
+
+.scroll-container-three{
+    overflow: hidden;
+}
+
+.allSedtionProjet {
+    display: flex;
+    align-items: center;
+    grid-gap: 40px;
+} 
+
+.card {
+    height: 400px;
+    width: 500px;
+    display: flex;
+    flex-shrink: 0;
+    perspective: 1000px;
+}
+
+.container-card {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: red;
+    border-radius: 20px;
+}
+

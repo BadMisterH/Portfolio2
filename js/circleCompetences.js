@@ -13,9 +13,7 @@ gsap.to(containerSkill, {
     start: "top top",
     end: () => "+=" + containerSkill.offsetHeight * 2,
     pin: true,
-    pinSpacing: true, 
     markers: false,
-    pinSpacing : true,
     onUpdate: (self) => {
 
       if(Math.round(self.progress * 100) <= 5){
