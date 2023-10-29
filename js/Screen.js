@@ -9,7 +9,7 @@ setTimeout(() => {
   gsap.to(svgPrensentationRideau, {
     opacity : 0,
   })
-}, 3000)
+}, 3200)
 
 function SvgVanished() {
   
@@ -23,7 +23,7 @@ setTimeout(SvgVanished, 3200)
 
 setTimeout(function () {
   document.querySelector(".container-rideau").classList.add("disparu");
-}, 5400);
+}, 5700);
 
 document.querySelectorAll(".rideau-element").forEach((element, index) => {
   if (index == 0) {
