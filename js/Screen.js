@@ -5,50 +5,56 @@ gsap.registerPlugin(ScrollTrigger);
 const svgPrensentationRideau = document.querySelector(".container-all-rideau svg")
 
 
-setTimeout(() => {
-  gsap.to(svgPrensentationRideau, {
-    opacity : 0,
-  })
-}, 3000)
+gsap.to(svgPrensentationRideau, {
+  delay: 3.5,
+  display: "none"
+})
 
-function SvgVanished() {
-  
-  svgPrensentationRideau.classList.add("disparu");
-
-  setTimeout(SvgVanished, 3200)
-}
-
-setTimeout(SvgVanished, 3200)
+gsap.to(svgPrensentationRideau, {
+  delay: 2.3,
+  opacity: 0
+})
 
 
-setTimeout(function () {
-  document.querySelector(".container-rideau").classList.add("disparu");
-}, 5400);
+const containerRideau = document.querySelector(".container-all-rideau");
+const AllScreens = [document.querySelector(".sectionLeftVericial"), document.querySelector(".sectionRightVertical"), document.querySelector(".sectionLeft"), document.querySelector(".sectionRight")];
 
-document.querySelectorAll(".rideau-element").forEach((element, index) => {
-  if (index == 0) {
-    gsap.to(element, {
-      x: 100 + "%",
-      delay: 2.4,
-      ease: "power2.inOut",
+AllScreens.forEach((elementScreen, index) => {
+  if (index === 0) {
+    gsap.to(elementScreen, {
+      delay: 1,
+      left: -700,
+      duration: 1, // Ajustez cette valeur pour une transition plus fluide
     });
-  } else if (index == 1) {
-    gsap.to(element, {
-      x: -100 + "%",
-      delay: 2.4,
-      ease: "power2.inOut",
-    });
-  } else if (index == 2) {
-    gsap.to(element, {
-      x: 100 + "%",
-      delay: 2.6,
-      ease: "power2.inOut",
-    });
-  } else {
-    gsap.to(element, {
-      x: -100 + "%",
-      delay: 2.6,
-      ease: "power2.inOut",
+  } else if (index === 1) {
+    gsap.to(elementScreen, {
+      delay: 1,
+      right: -700,
+      duration: 1,
     });
   }
+  else if (index === 2) {
+    gsap.to(elementScreen, {
+      delay: 2.7,
+      top: 700,
+      duration: 1,
+    });
+  } else {
+    gsap.to(elementScreen, {
+      delay: 2.7,
+      top: -300,
+      duration: 1,
+    });
+  }
+
 });
+
+
+gsap.to(containerRideau, {
+  delay: 3.1,
+  display: "none"
+})
+
+// Ajout d'un événement pour déclencher la transition
+
+

@@ -12,28 +12,64 @@
 }
 
 :root {
-  --couleurMain: #031335;
-  --couleurFond: #f3f1ee;
+  --couleurMain: #f3f1ee;
+  --couleurFond: #031335;
 }
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.section-bug {
+  position: fixed;
+  z-index: 10 !important;
+  top: -50px;
+  left: -50px;
+  opacity: 0.05;
+  width: calc(100% + 50px);
+  height: calc(100% + 50px);
+  background: repeating-linear-gradient(var(--couleurFond), var(--couleurFond) 50%, var(--couleurMain) 50%, var(--couleurMain));
+  background-size: 5px 5px;
+  filter: url(#noise);
+}
+
+.bug {
+  width: 0;
+  height: 0;
+}
+
 
 body {
   overflow: hidden;
   background-color: var(--couleurFond);
   position: relative;
+  height: 100vh;
+  cursor: none;
 }
 
 main {
   position: relative;
 }
 
+
 .container-all-rideau svg {
   height: 100px;
   width: 100px;
-  position: absolute;
+  position: fixed;  
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  z-index: 10000000;
+  z-index: 100000000000000000000000 !important;
+}
+
+.svgLogo{
+  background-color: var(--couleurFond);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container-all-rideau svg path {
@@ -41,41 +77,53 @@ main {
   stroke-dasharray: 400;
   stroke-dashoffset: 400;
   animation: reveal 3s ease-in-out forwards;
-  animation-delay: 0s;
+  animation-delay: 0.3s;
 }
 
 .container-all-rideau {
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: 100%;
+  z-index: 100000;
   /* display: none; */
 }
 
-.container-rideau {
-  height: 100vh;
+.sectionLeft , .sectionRight{
+  height: 50%;
   width: 100%;
   position: fixed;
-  display: flex;
-  flex-direction: column;
-  z-index: 100000;
-  
 }
 
-.disparu {
-  display: none;
+.sectionRight{
+  background-color: var(--couleurFond);
+  border-bottom : solid 1px var(--couleurMain);
+  top: 0;
 }
 
-.container-rideau span {
-  transition: 1s all;
+.sectionLeft{
+  background-color: var(--couleurFond);
+  border-top : solid 1px var(--couleurMain);
+  bottom: 0;
 }
 
-.rideau-element {
-  height: 25%;
-  width: 100%;
-  position: relative;
-  background-color: var(--couleurMain);
-  z-index: 99999;
+.sectionLeftVericial, .sectionRightVertical {
+  position: fixed;
+  height: 100vh;
+  width: 50%;
 }
+
+.sectionRightVertical{
+  right: 0;
+  background-color: var(--couleurFond);
+  border-left : solid 1px var(--couleurMain);
+}
+
+.sectionLeftVericial{
+  background-color: var(--couleurFond);
+  border-right : solid 1px var(--couleurMain);
+  left: 0;
+}
+
 
 
 /* section pour creer des boutons de téléchargement pour mes diplomes et ma lettre de recommandation */
@@ -129,7 +177,7 @@ main {
   flex-wrap: wrap;
   animation-delay: 0.5s;
   z-index: 1002;
-  box-shadow: 5px 3px 30px -3px rgba(243,241,238,0.38);
+  border-right: 1px solid var(--couleurMain);
 }
 
 .container-diplome-btn {
@@ -146,21 +194,21 @@ main {
   position: relative;
   cursor: pointer;
   padding: 0.35em 1em;
-  border: 0.15em solid var(--couleurFond);
+  border: 0.15em solid var(--couleurMain);
   border-radius: 0.45em;
   background: none;
   perspective: 2em;
   font-family: "Raleway", sans-serif;
   font-size: 1.3em;
   font-weight: 900;
-  color: var(--couleurFond);
+  color: var(--couleurMain);
   letter-spacing: 1em;
-  -webkit-box-shadow: inset 0px 0px 0.5em 0px var(--couleurFond),
-    0px 0px 0.5em 0px var(--couleurFond);
-  -moz-box-shadow: inset 0px 0px 0.5em 0px var(--couleurFond),
-    0px 0px 0.5em 0px var(--couleurFond);
-  box-shadow: inset 0px 0px 0.5em 0px var(--couleurFond),
-    0px 0px 0.5em 0px var(--couleurFond);
+  -webkit-box-shadow: inset 0px 0px 0.5em 0px var(--couleurMain),
+    0px 0px 0.5em 0px var(--couleurMain);
+  -moz-box-shadow: inset 0px 0px 0.5em 0px var(--couleurMain),
+    0px 0px 0.5em 0px var(--couleurMain);
+  box-shadow: inset 0px 0px 0.5em 0px var(--couleurMain),
+    0px 0px 0.5em 0px  var(--couleurMain);
   animation: border-flicker 2s linear infinite;
 }
 
@@ -168,7 +216,6 @@ main {
   background-color: var(--couleurFond);
   color: var(--couleurMain);
   border-color: var(--couleurMain);
-
   -webkit-box-shadow: inset 0px 0px 0.5em 0px var(--couleurMain),
     0px 0px 0.5em 0px var(--couleurMain);
   -moz-box-shadow: inset 0px 0px 0.5em 0px var(--couleurMain),
@@ -205,7 +252,7 @@ main {
   filter: blur(1em);
   transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
   pointer-events: none;
-  background-color: var(--couleurFond);
+  background-color: var(--couleurMain);
 }
 
 .glowing-btn::after {
@@ -324,46 +371,46 @@ main {
   z-index: 5;
 }
 
-a {
-  position:relative !important;
-  z-index: 999 !important;
-}
-
 /* cursor */
 
-.cursor{
-  border-radius: 1500px;
+.inner-cursor{
+  height: 20px;
+  width: 20px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100px;
+  pointer-events: none;
   mix-blend-mode: difference;
-  left: 0;
-  top: 0;
+  background-color: var(--couleurMain);
   position: fixed;
-  cursor: none;
-  transform: translate(-50%, -50%);
-  z-index: 10;
+  transition: width 0.5s, height 0.4s;
+  z-index: 99999999999999999;
 }
 
-#cursor1{
-  height: 100px;
-  width: 100px;
-  border : solid 2px var(--couleurFond);
+.outer-cursor {
+  height: 70px;
+  width: 70px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100px;
   mix-blend-mode: difference;
-  transition: 0.4s ease-in-out;
+  border : dashed 2px var(--couleurMain);
+  position: fixed;
+  pointer-events:none;
+  cursor: none ;
+  z-index: 99999999999999999;
 }
 
-#cursor2{
-  height: 30px;
-  width: 30px;
-  background-color: var(--couleurFond);
-  mix-blend-mode: difference; 
-  transition: 0.8s ease-in-out;
-}
+.inner-cursor.grow{
+  height: 40px;
+  width: 40px;
+  transition: width 0.5s, height 0.4s;
+  z-index: 99999999999999999;
 
-.cursorLarge{
-  transition: 0.2s all;
-  transform: translate(-50%, -50%);
-  height: 300px !important;
-  width: 300px !important;
-}
+} 
+
 
 
 .scrollbarProgression {
@@ -461,7 +508,8 @@ nav ul {
 nav ul li a {
   color: var(--couleurMain);
   text-decoration: none;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Do Hyeon', sans-serif;
+  letter-spacing: 4px;
   font-weight: bold;
   position: relative;
   font-size: 1.125rem;
@@ -484,140 +532,47 @@ nav ul li a:hover::before {
 
 .scroll-container-three {
   margin: 100px 0 0 0;
+  padding: 0px 30px;
   position: relative;
 }
 
 .scroll-container {
   display: flex;
+  grid-gap: 50px;
   position: relative;
 }
 
 .content-project {
-  height: 100vh;
-  width: 100%;
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  position: relative;
+  height: 350px;
+  width: 500px;
+  perspective: 1000;
 }
 
-.content-project-all-one,
-.content-project-all-two,
-.content-project-all-three {
-  max-width: 1200px;
-  min-width: 300px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 2s all;
-  padding: 10px 0;
+.content-project:hover{
+  z-index: 10;
 }
 
-.imgtTechTitre,
-.imgtTechTitre3 {
-  display: none;
-  flex-direction: column;
-  height: 100%;
-  width: 50%;
-  position: relative;
-  transform: translateY(-500px);
-  opacity: 0;
-}
-
-.h2Projet, .h3Projet{
-  text-transform: uppercase;
-  font-family: "PPNeueMontreal";
-  color: var(--couleurMain);
-  letter-spacing: -0.7px;
-}
-
-.imgtTechTitre2 {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 50%;
-  position: relative;
-  transform: translateY(700px);
-}
-
-.imgtTechTitre div,
-.imgtTechTitre2 div,
-.imgtTechTitre3 div {
-  display: flex;
-  flex-direction: column;
-  flex: 1 0 0;
-  margin: 30px 0 0 0;
-}
-
-.imgtTechTitre div > img,
-.imgProject2,
-.imgProject3 {
+.content-card{
+  overflow: hidden;
   height: 100%;
   width: 100%;
-}
-
-.mouseProjects {
+  border: solid 2px blue;
+  border-radius: 25px;
+  transition: 0.15s all ease-out;
+  background-color: red;
   position: relative;
-  z-index: 10000;
 }
 
-.imgProject,
-.imgProject2,
-.imgProject3 {
-  height: 100%;
-  width: 100%;
+.glow{
   position: absolute;
-  /* background: url("./public/assets/img/Todo2.png") cover/center; */
-  object-fit: cover;
-}
-
-
-.description-project,
-.description-project3 {
   height: 100%;
-  width: 50%;
-  align-items: flex-end;
-  display: none;
-  position: relative;
-  opacity: 0;
+  width: 100%;
+  opacity: 0.8;
+  border-radius: 25px;
+  transition: 0.15s all ease-out;
+  mix-blend-mode: hard-light;
+  background: radial-gradient(circle at 50% 0%, rgba(184, 196, 211), transparent);
 }
-
-.description-project {
-  transform: translateY(700px);
-}
-
-.description-project3 {
-  transform: translateX(700px);
-}
-
-.description-project2 {
-  height: 100%;
-  width: 50%;
-  align-self: flex-end;
-  display: flex;
-  position: relative;
-  transform: translateY(-800px);
-}
-
-.description-project p,
-.description-project2,
-.description-project3 p {
-  height: fit-content;
-  font-family: "PPNeueMontreal";
-  font-size: 1.7vw;
-  line-height: 2rem;
-  letter-spacing: 3px;
-  font-weight: 500;
-  margin-left: 10px;
-  color: var(--couleurMain);
-}
-
-#titleProjectSection{
-  position: relative;
-  right: 20px;
-}
-
 
 .content-project span {
   position: absolute;
@@ -627,7 +582,7 @@ nav ul li a:hover::before {
 
 .TitleProjects{
   position: relative;
-  font-family: "Poppins";
+  font-family: 'Do Hyeon', sans-serif;
   font-weight: normal;
   font-size: 284px;
   color: var(--couleurMain);
@@ -675,7 +630,7 @@ nav ul li a:hover::before {
   position: absolute;
   height: 0px;
   width: 0px;
-  background-color: #03133570;
+  background-color: #f3f1ee70;
   backdrop-filter: blur(2px);
   border-radius: 50px;
   padding: 10px 30px;
@@ -691,9 +646,11 @@ nav ul li a:hover::before {
 }
 
 .pop-up-scroll p{
-  font-family: 'Poppins';
+  font-family: "Poppins", sans-serif;
   font-weight: bold;
   color: var(--couleurFond);
+  letter-spacing: 3px;
+  line-height: 40px;
   text-transform: uppercase;
   font-weight: bold;
   max-width: 1000px;
@@ -715,11 +672,12 @@ nav ul li a:hover::before {
 }
 
 h1 {
-  font-family: "Poppins";
+  font-family: "PPNeueMontreal";
   font-weight: 300;
   width: 80%;
   margin: 0 auto;
   font-size: 12.5vw;
+  -webkit-text-stroke: 3px var(--couleurFond);
   color: var(--couleurMain);
   text-transform: uppercase;
   line-height: 0.9;
@@ -802,7 +760,8 @@ h1 {
 
 .Competences h2 {
   font-size: 3rem;
-  font-family: "Poppins";
+  font-family: 'Do Hyeon', sans-serif;
+  letter-spacing: 4px;
   font-weight: bold;
   color: var(--couleurFond);
   opacity: 0;
@@ -867,12 +826,12 @@ h1 {
 }
 
 .croix-svg.active::after {
-  background-color: #031335;
+  background-color: var(--couleurMain);
   transition: 1s all;
 }
 
 .croix-svg.active::before {
-  background-color: #031335;
+  background-color: var(--couleurMain);
   transition: 1s all;
 }
 
